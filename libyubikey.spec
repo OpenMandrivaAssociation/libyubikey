@@ -1,10 +1,10 @@
 %define	major 0
-%define libname	%mklibname libyubikey %{major}
-%define develname %mklibname -d libyubikey
+%define libname	%mklibname yubikey %{major}
+%define develname %mklibname -d yubikey
 
 Summary:	Decrypting and parsing Yubikey One-Time Passwords Low-level library
 Name:		libyubikey
-Version:	1.2
+Version:	1.4
 Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
