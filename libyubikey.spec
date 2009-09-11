@@ -4,7 +4,7 @@
 
 Summary:	Decrypting and parsing Yubikey One-Time Passwords Low-level library
 Name:		libyubikey
-Version:	1.4
+Version:	1.5
 Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
@@ -99,4 +99,3 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_bindir}/libyubikey-modhex
 %{_bindir}/libyubikey-ykdebug
-
