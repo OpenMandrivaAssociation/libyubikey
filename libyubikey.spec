@@ -4,14 +4,14 @@
 
 Summary:	Decrypting and parsing Yubikey One-Time Passwords Low-level library
 Name:		libyubikey
-Version:	1.5
-Release:	%mkrel 2
+Version:	1.6
+Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://code.google.com/p/yubico-c/
 Source0:	http://yubico-c.googlecode.com/files/%{name}-%{version}.tar.gz
+Patch0:		libyubikey-1.6-no_rpath.diff
 BuildRequires:	autoconf
-BuildRequires:	chrpath
 BuildRequires:	libtool
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -47,12 +47,12 @@ Group:          System/Libraries
 Low-level library for decrypting and parsing Yubikey One-Time Passwords (OTP),
 for C.
 
- o libyubikey-modhex - Simple ModHex conversion command line tool
- o libyubikey-ykdebug - Example command line interface for authentication token
+This package contains various tools for libyubikey.
 
 %prep
 
 %setup -q -n %{name}-%{version}
+%patch0 -p0
 
 %build
 autoreconf -fis
@@ -68,10 +68,8 @@ rm -rf %{buildroot}
 
 # rename the too generic file names
 mv %{buildroot}%{_bindir}/modhex %{buildroot}%{_bindir}/libyubikey-modhex
-mv %{buildroot}%{_bindir}/ykdebug %{buildroot}%{_bindir}/libyubikey-ykdebug
-
-# nuke rpath
-chrpath -d %{buildroot}%{_bindir}/*
+mv %{buildroot}%{_bindir}/ykgenerate %{buildroot}%{_bindir}/libyubikey-ykgenerate
+mv %{buildroot}%{_bindir}/ykparse %{buildroot}%{_bindir}/libyubikey-ykparse
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
@@ -98,4 +96,5 @@ rm -rf %{buildroot}
 %files tools
 %defattr(-,root,root)
 %{_bindir}/libyubikey-modhex
-%{_bindir}/libyubikey-ykdebug
+%{_bindir}/libyubikey-ykgenerate
+%{_bindir}/libyubikey-ykparse
