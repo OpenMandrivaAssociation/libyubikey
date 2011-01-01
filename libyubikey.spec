@@ -4,12 +4,13 @@
 
 Summary:	Decrypting and parsing Yubikey One-Time Passwords Low-level library
 Name:		libyubikey
-Version:	1.6
+Version:	1.7
 Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://code.google.com/p/yubico-c/
 Source0:	http://yubico-c.googlecode.com/files/%{name}-%{version}.tar.gz
+Source1:	http://yubico-c.googlecode.com/files/%{name}-%{version}.tar.gz.sig
 Patch0:		libyubikey-1.6-no_rpath.diff
 BuildRequires:	autoconf
 BuildRequires:	libtool
