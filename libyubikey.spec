@@ -5,16 +5,14 @@
 Summary:	Decrypting and parsing Yubikey One-Time Passwords Low-level library
 Name:		libyubikey
 Version:	1.7
-Release:	%mkrel 2
+Release:	3
 Group:		System/Libraries
 License:	BSD
 URL:		http://code.google.com/p/yubico-c/
 Source0:	http://yubico-c.googlecode.com/files/%{name}-%{version}.tar.gz
 Source1:	http://yubico-c.googlecode.com/files/%{name}-%{version}.tar.gz.sig
 Patch0:		libyubikey-1.6-no_rpath.diff
-BuildRequires:	autoconf
-BuildRequires:	libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	autoconf automake libtool
 
 %description
 Low-level library for decrypting and parsing Yubikey One-Time Passwords (OTP),
@@ -32,7 +30,7 @@ online server.
 Summary:	Static library and header files for the libyubikeyt library
 Group:		Development/C
 Provides:	%{name}-devel = %{version}
-Requires:	%{libname} = %{version}
+Requires:	%{libname} >= %{version}
 
 %description -n	%{develname}
 Low-level library for decrypting and parsing Yubikey One-Time Passwords (OTP),
@@ -72,30 +70,18 @@ mv %{buildroot}%{_bindir}/modhex %{buildroot}%{_bindir}/libyubikey-modhex
 mv %{buildroot}%{_bindir}/ykgenerate %{buildroot}%{_bindir}/libyubikey-ykgenerate
 mv %{buildroot}%{_bindir}/ykparse %{buildroot}%{_bindir}/libyubikey-ykparse
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf %{buildroot}
+# cleanups
+rm -f %{buildroot}%{_libdir}/*.*a
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README
 %{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.*a
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/libyubikey-modhex
 %{_bindir}/libyubikey-ykgenerate
 %{_bindir}/libyubikey-ykparse
