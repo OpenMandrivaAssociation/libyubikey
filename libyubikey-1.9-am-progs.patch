@@ -1,0 +1,16 @@
+diff --git a/configure.ac b/configure.ac
+index e568c7c..1b079d3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -37,6 +37,11 @@ AC_SUBST(LT_CURRENT, 1)
+ AC_SUBST(LT_REVISION, 3)
+ AC_SUBST(LT_AGE, 1)
+ 
++# automake 1.12 seems to require this, but automake 1.11 doesn't recognize it
++m4_pattern_allow([AM_PROG_AR])
++AM_PROG_AR
++
++
+ AM_INIT_AUTOMAKE([1.10 -Wall -Werror])
+ AM_SILENT_RULES([yes])
+ AC_PROG_CC
