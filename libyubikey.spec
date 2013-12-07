@@ -5,7 +5,7 @@
 Summary:	Decrypting and parsing Yubikey One-Time Passwords Low-level library
 Name:		libyubikey
 Version:	1.9
-Release:	2
+Release:	3
 Group:		System/Libraries
 License:	BSD
 Url:		http://code.google.com/p/yubico-c/
