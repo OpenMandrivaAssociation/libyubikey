@@ -44,7 +44,7 @@ This package contains various tools for libyubikey.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 libtoolize -f -c
 autoreconf -fis
 
