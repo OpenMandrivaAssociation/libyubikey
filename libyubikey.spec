@@ -13,6 +13,11 @@ URL:		https://developers.yubico.com/yubico-c/
 Source0:	https://developers.yubico.com/yubico-c/Releases/%{name}-%{version}.tar.gz
 #Patch0:	libyubikey-1.9-am-progs.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libtool
 
 %description
